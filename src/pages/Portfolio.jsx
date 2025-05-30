@@ -7,6 +7,7 @@ import {
   ExternalLink,
   Menu,
   X,
+  Phone,
 } from "lucide-react";
 import myImage from "../assets/myImage.png";
 import DriveEase from "../assets/DriveEase.png";
@@ -62,15 +63,19 @@ const Portfolio = () => {
   const skills = [
     { name: "React & Next.js", level: 92 },
     { name: "UI/UX Design", level: 82 },
-    { name: "Three.js & WebGL", level: 42 },
+    { name: "javascript", level: 42 },
     { name: "Node.js", level: 85 },
     { name: "Python & AI", level: 20 },
   ];
 
+  const handleProjectClick = (url) => {
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-hidden relative">
       {/* Animated Background */}
-      <div className="fixe inset-0 z-0">
+      <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20"></div>
         <div
           className="absolute w-96 h-96 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full blur-3xl animate-pulse"
@@ -286,38 +291,32 @@ const Portfolio = () => {
                     </div>
 
                     <div className="flex space-x-3">
-                      <div
-                        onClick={() =>
-                          window.open(
-                            project.live,
-                            "_blank",
-                            "noopener,noreferrer"
-                          )
-                        }
-                        className="cursor-pointer flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors duration-300"
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleProjectClick(project.live);
+                        }}
+                        className="flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors duration-300 bg-transparent border-none cursor-pointer p-0"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
-                      </div>
+                      </button>
 
-                      <div
-                        onClick={() =>
-                          window.open(
-                            project.code,
-                            "_blank",
-                            "noopener,noreferrer"
-                          )
-                        }
-                        className="cursor-pointer flex items-center space-x-2 text-gray-400 hover:text-gray-300 transition-colors duration-300"
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleProjectClick(project.code);
+                        }}
+                        className="flex items-center space-x-2 text-gray-400 hover:text-gray-300 transition-colors duration-300 bg-transparent border-none cursor-pointer p-0"
                       >
                         <Github className="w-4 h-4" />
                         <span>Code</span>
-                      </div>
+                      </button>
                     </div>
                   </div>
 
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}
                   ></div>
                 </div>
               ))}
@@ -330,7 +329,7 @@ const Portfolio = () => {
       {activeSection === "contact" && (
         <section className="relative z-10 min-h-screen flex items-center px-6 py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent pb-2">
               Let's Work Together
             </h2>
             <p className="text-xl text-gray-300 mb-12 leading-relaxed">
@@ -339,23 +338,29 @@ const Portfolio = () => {
             </p>
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="group p-6 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105">
+              <div
+              className="group p-6 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105">
                 <Mail className="w-8 h-8 text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-lg font-semibold mb-2">Email</h3>
-                <p className="text-gray-400">alex@alexchen.dev</p>
+                <p className="text-gray-400">muhsinck77@gmail.com</p>
               </div>
 
               <div className="group p-6 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105">
                 <Linkedin className="w-8 h-8 text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-lg font-semibold mb-2">LinkedIn</h3>
-                <p className="text-gray-400">@alexchendev</p>
+                <p className="text-gray-400">@Muhsin Muhsin</p>
               </div>
 
               <div className="group p-6 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105">
                 <Github className="w-8 h-8 text-purple-400 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-lg font-semibold mb-2">GitHub</h3>
-                <p className="text-gray-400">@alexchendev</p>
+                <p className="text-gray-400">@muhsinmuhsi</p>
               </div>
+            </div>
+
+
+            <div className="p-2">
+              <Phone className="inline"/> +91 7025328136
             </div>
 
             <button className="px-12 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/25">
@@ -368,7 +373,7 @@ const Portfolio = () => {
       {/* Footer */}
       <footer className="relative z-10 text-center py-8 border-t border-gray-800">
         <p className="text-gray-500">
-          © 2025 Alex Chen. Crafted with passion and modern tech.
+          © 2025 muammed muhsin ck. Crafted with passion and modern tech.
         </p>
       </footer>
     </div>
